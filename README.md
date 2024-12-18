@@ -61,6 +61,61 @@ if __name__ == "__main__":
         print(f"An error occurred: {e}")
 ```
 
+## Key Components
+1. `SlideShowAI`:
+- Provides the main interface for interacting with the API.
+- Streams responses in real-time and processes them into a complete message.
+
+2. `SlideShowAIClient`:
+
+- Handles HTTP communication with the API.
+- Implements the APIClient abstract base class for extensibility.
+
+3. `SlideShowAIError`:
+
+- Custom exception for handling API-related errors with additional context.
+
+---
+
+## Extensibility
+This client is designed with flexibility in mind. You can extend its functionality by:
+
+- Adding new API endpoints to the SlideShowAIClient.
+- Overriding methods in the APIClient base class.
+
+---
+
+## API Endpoint
+The client communicates with the SlideShow AI server at:
+
+```bash
+https://slideshow-5.onrender.com/process_message
+```
+
+## Payload Example
+```json
+{
+    "message": "What is artificial intelligence?"
+}
+```
+
+## Response Format
+The server returns streamed JSON responses with the following structure:
+
+```json
+{
+    "response": "Artificial Intelligence (AI) refers to..."
+}
+```
+
+## Error Handling
+Errors are captured as instances of `SlideShowAIError` and include:
+
+- Error messages
+- Contextual details (e.g., response content or exception info)
+
+---
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
